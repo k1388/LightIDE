@@ -1,0 +1,120 @@
+﻿<Page
+    x:Class="Light_IDE.SettingPages.Setting_General"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Light_IDE.SettingPages"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Setting_General"
+    d:DesignHeight="600"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Margin="30">
+                    <Label Content="缓存路径" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            x:Name="edi_Cache"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="缓存路径"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <Button
+                            x:Name="btn_CachePath"
+                            Grid.Column="1"
+                            Click="btn_CachePath_Click"
+                            Content="..."
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" />
+                    </Grid>
+
+                </StackPanel>
+                <StackPanel Margin="30">
+                    <Label Content="编译语言" />
+                    <ComboBox
+                        x:Name="combo_lang"
+                        materialDesign:HintAssist.Hint="编译语言"
+                        SelectedIndex="1">
+
+                        <ComboBoxItem Content="Java" />
+                        <ComboBoxItem Content="Python" />
+                        <ComboBoxItem Content="C" />
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            x:Name="edi_py"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="Python解释器路径(通常是python.exe所在文件夹)"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <Button
+                            x:Name="btn_py"
+                            Grid.Column="1"
+                            Click="btn_py_Click"
+                            Content="..."
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Margin="30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            x:Name="edi_java"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="java路径(通常是jdk-xxx\bin文件夹)"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <Button
+                            x:Name="btn_java"
+                            Grid.Column="1"
+                            Click="btn_java_Click"
+                            Content="..."
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Margin="30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            x:Name="edi_c"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="C编译器路径(仅支持Tiny C Compiler,通常为tcc.exe所在文件夹)"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <Button
+                            x:Name="btn_c"
+                            Grid.Column="1"
+                            Click="btn_c_Click"
+                            Content="..."
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" />
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

@@ -1,0 +1,48 @@
+﻿<Page x:Class="Light_IDE.SettingPages.Setting_Advanced"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Light_IDE.SettingPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Setting_Advanced">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Margin="30">
+                    <Label Content="自定义GPT API-Key" />
+                    <TextBox
+                                x:Name="edi_key"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="输入您的API-Key（留空为使用默认key）"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel Margin="30">
+                    <Label Content="GPT参数设置" />
+                    <StackPanel Margin="10">
+                        <Label Content="创新参数（temperature）" />
+                        <Slider
+                                    x:Name="sld_tem"
+                                    Maximum="50"
+                                    Minimum="0"
+                                    Value="35" />
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <Label Content="重复度参数（top _p）" />
+                        <Slider
+                                    x:Name="sld_tp"
+                                    Maximum="50"
+                                    Minimum="0"
+                                    Value="35" />
+                    </StackPanel>
+
+
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

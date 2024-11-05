@@ -1,0 +1,141 @@
+﻿<Page
+    x:Class="Light_IDE.Pages.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Light_IDE.Pages"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="EditPage"
+    d:DesignHeight="600"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid x:Name="page">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Border Background="#f5f7fb">
+            <DockPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="edi_ClassName"
+                        Width="180"
+                        Margin="3"
+                        materialDesign:HintAssist.Hint="请输入文件名"
+                        materialDesign:TransitionAssist.DisableTransitions="True"
+                        MaxLength="20" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button
+                        x:Name="btn_new"
+                        Width="40"
+                        Height="40"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Center"
+                        Click="btn_new_Click"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="新建">
+                        <materialDesign:PackIcon Foreground="#CCCCCC" Kind="FileDocumentMultiple" />
+                    </Button>
+                    <Button
+                        x:Name="btn_save"
+                        Width="40"
+                        Height="40"
+                        Margin="10,0,10,0"
+                        HorizontalAlignment="Center"
+                        Click="Btn_Save_Click"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="保存" Cursor="Hand">
+                        <materialDesign:PackIcon Foreground="#CCCCCC" Kind="Floppy" />
+                    </Button>
+
+
+                    <Button
+                        x:Name="btn_upload"
+                        Width="40"
+                        Height="40"
+                        Margin="10,0,10,0"
+                        HorizontalAlignment="Center"
+                        Click="btn_upload_Click"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="上传" Cursor="Hand">
+                        <materialDesign:PackIcon Foreground="#CCCCCC" Kind="CloudUpload" />
+                    </Button>
+                    <Button
+                        x:Name="btn_start"
+                        Width="40"
+                        Height="40"
+                        Margin="10,0,10,0"
+                        Click="btn_start_Click"
+                        Background="{StaticResource SecondaryHueMidBrush}"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="运行">
+                        <materialDesign:PackIcon Foreground="#121212" Kind="play" />
+                    </Button>
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
+        <avalonedit:TextEditor
+            x:Name="edi_Main"
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            AllowDrop="True"
+            Background="#c8d9f1"
+            DocumentChanged="edi_Main_DocumentChanged"
+            PreviewDragOver="Edi_Main_PreviewDragOver"
+            PreviewDrop="Edi_Main_PreviewDrop" TextChanged="OnEditorTextChanged" PreviewKeyDown="edi_Main_PreviewKeyDown"/>
+        <Popup x:Name="completionPopup" IsOpen="False" PlacementTarget="{Binding ElementName=edi_Main}">
+            <Border Background="White" BorderBrush="Gray" BorderThickness="1">
+                <ListBox x:Name="completionList">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="False">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Foreground" Value="#AAAAAA"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="DarkBlue"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                </ListBox>
+            </Border>
+        </Popup>
+        <Grid Grid.Row="2" Background="#FFA8BBD6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="0"
+                Background="{DynamicResource PrimaryHueLightBrush}"
+                Content="输出"
+                Foreground="#CCCC" />
+            <TextBox
+                x:Name="edi_cmd"
+                Grid.Row="1"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Top"
+                FontFamily="Consolas"
+                FontSize="14"
+                Text="Ready"
+                TextWrapping="Wrap" />
+
+        </Grid>
+
+    </Grid>
+</Page>
